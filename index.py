@@ -38,7 +38,7 @@ def send_slack_message(channel_id, message, ephemeral):
         headers={
             "Authorization": f"Bearer {SLACK_BOT_TOKEN}",
             "Content-Type": "application/json",
-            "response_type": ephemeral
+            "response_type": 'ephemeral' if ephemeral else 'in_channel'
         },
         json=payload
     )   
