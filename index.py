@@ -33,13 +33,12 @@ def verify_slack_request(req):
 # Helper for sending Slack
 def send_slack_message(channel_id, message, ephemeral):
     payload = {"channel": channel_id, "text": message}
-    if ephemeral:
-        payload["response_type"] = "ephemeral"
     response = requests.post(
         SLACK_API_URL,
         headers={
             "Authorization": f"Bearer {SLACK_BOT_TOKEN}",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "ephemeral": ephemeral
         },
         json=payload
     )   
