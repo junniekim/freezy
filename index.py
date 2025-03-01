@@ -35,7 +35,7 @@ def send_slack_message(channel_id, message, ephemeral):
     payload = {"channel": channel_id, "text": message}
     if ephemeral:
         payload["response_type"] = "ephemeral"
-    response = requests.post(
+    requests.post(
         SLACK_API_URL,
         headers={
             "Authorization": f"Bearer {SLACK_BOT_TOKEN}",
@@ -43,13 +43,6 @@ def send_slack_message(channel_id, message, ephemeral):
         },
         json=payload
     )
-    if response.json().get("ok"):
-        return jsonify({"text": "Successfully sent message to Slack!"})
-    else:
-        return jsonify({
-            "text": "Failed to send message to Slack.",
-            "error": response.json()
-        }), 500
 
 @app.route("/slack/command", methods=["POST"])
 def slack_command():
