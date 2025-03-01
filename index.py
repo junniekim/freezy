@@ -120,7 +120,6 @@ def handle_unfreeze(repo_name, channel_id):
     message = f"🔥 Code freeze lifted on: *{', '.join(unfrozen)}*."
     return send_slack_message(channel_id, message, False)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 3000)), debug=os.getenv("DEBUG", "False") == "True")
-    
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=int(os.getenv("PORT", 3000)), debug=os.getenv("DEBUG", "False") == "True")
     
