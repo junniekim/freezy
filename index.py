@@ -43,7 +43,7 @@ def send_slack_message(channel_id, message, ephemeral):
         json=payload
     )   
     if response.json().get("ok"):
-        return "", 200
+        return "Message Sent", 200
     else:
         return "Error occurred", 500
     
