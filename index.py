@@ -121,6 +121,6 @@ def handle_unfreeze(repo_name, channel_id):
     return send_slack_message(channel_id, message, False)
 
 if __name__ == "__main__":
-    app.run(port=3000, debug=True)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 3000)), debug=os.getenv("DEBUG", "False") == "True")
     
     
